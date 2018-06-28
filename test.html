@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Carousel</title>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <style media="screen">
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #slider {
+        position: relative;
+        overflow: hidden;
+        width: 100vw;
+        height: 40vh;
+      }
+
+      .container {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+      }
+
+      #slider img {
+        max-width: calc( 100% + 200px );
+        position: relative;
+        right: 100px;
+      }
+
+      #slider .container:not(:first-child) {
+        transform: translateX(100%);
+      }
+
+      #slider .container:not(:first-child) img {
+        transform: translateX(-200px);
+      }
+
+      #slider .caption {
+        font-family: 'Playfair Display', 'Avenir', sans-serif;
+        font-size: 48px;
+        position: absolute;
+        top: 60%;
+        left: 100px;
+        color: white;
+        margin: 0;
+        padding: 0;
+      }
+
+      #slider .caption:not(:first-child) {
+        opacity: 0;
+        cursor: default;
+      }
+
+      .captions .caption-transition {
+        background-color: #ed7b2f;
+        width: 2px;
+        height: 70px;
+        position: absolute;
+        top: 60%;
+        left: 90px;
+        opacity: 0;
+      }
+
+      #slider .pg-number {
+        font-family: 'Playfair Display', 'Avenir', sans-serif;
+        font-size: 64px;
+        position: absolute;
+        top: 10px;
+        right: 50px;
+        color: white;
+        margin: 0;
+        padding: 0;
+      }
+
+      #slider .pg-number:not(:first-child) {
+        opacity: 0;
+      }
+
+      .pg-numbers .pg-number-transition {
+        background-color: #ed7b2f;
+        width: 2px;
+        height: 65px;
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        opacity: 0;
+      }
+
+      .arrow {
+        background: url('arrow.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 50px;
+        height: 50px;
+        margin-top: -25px;
+        cursor: pointer;
+      }
+
+      .arrow-left {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: rotateY(180deg);
+      }
+
+      .arrow-right {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="slider">
+      <div class="container">
+        <img src="athens.jpg" alt="athens">
+      </div>
+      <div class="container">
+        <img src="taipei.jpg" alt="taipei">
+      </div>
+      <div class="container">
+        <img src="paris.jpg" alt="paris">
+      </div>
+      <div class="captions">
+        <h1 class="caption">Audere posso.</h1>
+        <h1 class="caption">Videre posso.</h1>
+        <h1 class="caption">Superare posso.</h1>
+        <span class="caption-transition"></span>
+      </div>
+      <div class="pg-numbers">
+        <h2 class="pg-number">1</h2>
+        <h2 class="pg-number">2</h2>
+        <h2 class="pg-number">3</h2>
+        <span class="pg-number-transition"></span>
+      </div>
+      <div class="nav-arrows">
+        <i class="arrow arrow-left"></i>
+        <i class="arrow arrow-right"></i>
+      </div>
+    </div><!-- #slider -->
+  </body>
+  <script src="anime.min.js" charset="utf-8"></script>
+  <script src="carouzel.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    var carouzel = new Carouzel('#slider');
+  </script>
+</html>
